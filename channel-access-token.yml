@@ -29,9 +29,7 @@ paths:
         content:
           application/x-www-form-urlencoded:
             schema:
-              oneOf:
-                - $ref: '#/components/schemas/IssueStatelessChannelTokenByJWTAssertionRequest'
-                - $ref: '#/components/schemas/IssueStatelessChannelTokenByClientSecretRequest'
+              - $ref: '#/components/schemas/IssueStatelessChannelTokenRequest'
       responses:
         "200":
           description: "OK"
@@ -294,6 +292,14 @@ paths:
 
 components:
   schemas:
+    IssueStatelessChannelTokenRequest:
+      externalDocs:
+        url: https://developers.line.biz/en/reference/messaging-api/#issue-stateless-channel-access-token
+      description: "Request body to issue a new token"
+      type: object
+      oneOf:
+        - $ref: '#/components/schemas/IssueStatelessChannelTokenByJWTAssertionRequest'
+        - $ref: '#/components/schemas/IssueStatelessChannelTokenByClientSecretRequest'
     IssueStatelessChannelTokenByJWTAssertionRequest:
       externalDocs:
         url: https://developers.line.biz/en/reference/messaging-api/#issue-stateless-channel-access-token
